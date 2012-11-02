@@ -30,7 +30,7 @@ Create gemset for tech-lady project use:
 
 Run following command in your terminal:
 
-  $ git clone git@github.com:wmaintw/rails-girl.git
+  $ git clone git@github.com:wmaintw/tech-lady.git
 
 (5) Rock and roll.
 
