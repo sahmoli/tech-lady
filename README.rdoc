@@ -2,35 +2,37 @@
 This is the website for Rails Girl activity.
 
 == Geting Started
-(1) install ruby
-We use ruby version 1.9.3p194, you can use RVM to help you install ruby.
-RVM: https://rvm.io
+(1) Install ruby.
 
-(2) install rails
-We use rails version 3.2.8, after you installed ruby, please run following command:
+We use ruby version +1.9.3p194+, you can use RVM to help you install ruby.
 
-    a) update RubyGems
-       gem update --system
+* RVM url: https://rvm.io
 
-if you don't have RubyGems installed, please install it first.
+(2) Install rails.
+We use rails version +3.2.8+, after you installed ruby, please run following command:
+
+a) update RubyGems
+$ gem update --system
+
+* If you don't have RubyGems installed, please install it first.
 RubyGems: http://rubygems.org/pages/download
 
-    b) use RubyGems to install Rails
-       gem install rails
+b) use RubyGems to install Rails
+$ gem install rails
 
-(3) clone this project
+(3) Clone this project.
 Run following command in your terminal:
-git clone git@github.com:wmaintw/rails-girl.git
+$ git clone git@github.com:wmaintw/rails-girl.git
 
-(4) rock and roll
+(4) Rock and roll
 Go to the root folder of this project, and run following command:
-. build.sh
+$ . build.sh
 
 After all tests passed, run following command:
-. build.sh s
+$ . build.sh s
 
 By the way, you can run following command to get help:
-. build.sh h
+$ . build.sh h
 
 When web server started successfully, visit http://localhost:3000 in your browser.
 
