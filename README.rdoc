@@ -1,4 +1,4 @@
-== Welcome to Rails Girl
+== Welcome to Tech Lady
 This is the website for Tech Lady.
 
 == Geting Started
