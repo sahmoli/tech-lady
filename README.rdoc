@@ -7,6 +7,7 @@ This is the website for Rails Girl activity.
 We use ruby version +1.9.3p194+, you can use RVM to help you install ruby. (RVM url: https://rvm.io)
 
 (2) Install rails.
+
 We use rails version +3.2.8+, after you installed ruby, please run following command:
 
 a) update RubyGems
@@ -20,11 +21,13 @@ b) use RubyGems to install Rails
   $ gem install rails
 
 (3) Clone this project.
+
 Run following command in your terminal:
 
   $ git clone git@github.com:wmaintw/rails-girl.git
 
-(4) Rock and roll
+(4) Rock and roll.
+
 Go to the root folder of this project, and run following command:
 
   $ . build.sh
