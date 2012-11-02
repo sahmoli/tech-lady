@@ -1,5 +1,5 @@
 == Welcome to Rails Girl
-This is the website for Rails Girl activity.
+This is the website for Tech Lady.
 
 == Geting Started
 (1) Install ruby.
@@ -22,9 +22,9 @@ b) use RubyGems to install Rails
 
 (3) Configure gemset
 
-Create gemset for Rails-Girl project use:
+Create gemset for tech-lady project use:
 
-  $ rvm gemset create rails-girl
+  $ rvm gemset create tech-lady
 
 (4) Clone this project.
 
