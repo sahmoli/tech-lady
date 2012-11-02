@@ -20,13 +20,19 @@ b) use RubyGems to install Rails
 
   $ gem install rails
 
-(3) Clone this project.
+(3) Configure gemset
+
+Create gemset for Rails-Girl project use:
+
+  $ rvm gemset create rails-girl
+
+(4) Clone this project.
 
 Run following command in your terminal:
 
   $ git clone git@github.com:wmaintw/rails-girl.git
 
-(4) Rock and roll.
+(5) Rock and roll.
 
 Go to the root folder of this project, and run following command:
 
@@ -36,10 +42,10 @@ After all tests passed, run following command:
 
   $ . build.sh s
 
-By the way, you can run following command to get help:
+When web server started successfully, visit http://localhost:3000 in your browser.
+
+By the way, you can run following command to get help information for +build.sh+:
 
   $ . build.sh h
-
-When web server started successfully, visit http://localhost:3000 in your browser.
 
 Ok, all done, cheers.
