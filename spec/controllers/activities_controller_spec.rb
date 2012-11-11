@@ -62,6 +62,12 @@ describe ActivitiesController do
     response.body.should =~ /addRESS/
   end
 
+  it "should contain link to detail" do
+    activity = Activity.create!({title:"Rails Girls", description:"desc1", activity_date: Time.now, address:"addRESS"})
+    get :index
+    response.body.should =~ /"\/activities\/#{activity.id}"/
+  end
+
 
   it "should contain title of activity" do
     activity = Activity.create!({title: "Rails Girls", description: "desc1", activity_date: Time.now, address: "add1"})
