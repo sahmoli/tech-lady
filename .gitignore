@@ -16,3 +16,6 @@
 /.idea
 
 .DS_Store
+
+db/schema.rb
+db/*.sqlite3
