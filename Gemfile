@@ -38,11 +38,7 @@ gem 'jquery-rails'
 group :test, :development do
   gem "factory_girl_rails", "4.1.0"
   gem "rspec-rails", "~> 2.0"
-end
-
-
-gem 'sqlite3', '1.3.5'
-group :development do
+  gem 'sqlite3', '1.3.5'
 end
 
 group :production do
