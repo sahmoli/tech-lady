@@ -1,6 +1,6 @@
 RailsGirl::Application.routes.draw do
-  get "activities/show"
 
+  resources :activities
   resources :imgs
 
   # The priority is based upon order of creation:

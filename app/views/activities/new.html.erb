@@ -1,0 +1,12 @@
+<%= form_for @activity do |f| %>
+    Title:<br />
+    <%= f.text_field :title%><br />
+    Description:<br />
+    <%= f.text_area :description%>     <br />
+    Address:<br /><%= f.text_field :address %>              <br />
+    Date:<br /><%= f.datetime_select :activity_date%>           <br />
+
+    <%= f.submit%>
+
+
+<%end%>
