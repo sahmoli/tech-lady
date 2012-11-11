@@ -35,11 +35,12 @@ describe ActivitiesController do
   end
 
   it "should contains activities" do
-    Activity.create!({title:"1", description:"desc1", activity_date:Time.now, address:"add1"})
-    Activity.create!({title:"2", description:"desc2", activity_date:Time.now, address:"add2"})
-    Activity.create!({title:"3", description:"desc3", activity_date:Time.now, address:"add3"})
+    act1 = Activity.create!({title:"1", description:"desc1", activity_date:Time.now, address:"add1"})
+    act2 = Activity.create!({title:"2", description:"desc2", activity_date:Time.now, address:"add2"})
     get :index
     assigns(:activities).should_not be_nil
+    assigns(:activities).should include(act1)
+    assigns(:activities).should include(act2)
   end
 
   it "should contain name" do
