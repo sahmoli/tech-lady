@@ -41,6 +41,14 @@ group :test, :development do
   gem 'sqlite3', '1.3.5'
 end
 
+
+rails_env = ENV['RAILS_ENV']
+if rails_env == "development" || rails_env == "test"
+  gem "factory_girl_rails", "4.1.0"
+  gem "rspec-rails", "~> 2.0"
+  gem 'sqlite3', '1.3.5'
+end
+
 group :production do
   gem 'pg'
 end
