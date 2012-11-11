@@ -102,10 +102,11 @@
           <div class="info">
             <div class="info-item">
               <label>本期</label>
-              <h2><a class="event-detail" href="event-detail.html">冬意渐浓</a></h2>
+              <h2><%= link_to @activity.title, activity_path(@activity), class: "event-detail" %>
+              </h2>
             </div>
             <div class="info-item">
-              <label><%= @activity.title %></label>
+              <label>时间</label>
               <% time = @activity.activity_date %>
               <h3><%= time.hour %>:<%= time.min%></h3>
               <h3><%= time.year %>年<%= time.month%>月<%= time.day%>日</h3>
@@ -114,7 +115,7 @@
               <label>地点</label>
               <h3><%= @activity.address%></h3>
             </div>
-            <a class="more-events" href="event-list.html"><span>往期</span></a>
+            <%= link_to raw("<span>往期</span>"), activities_path, class: "more-events" %>
           </div>
         </div>
 
