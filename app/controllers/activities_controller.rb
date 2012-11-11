@@ -24,20 +24,16 @@ class ActivitiesController < ApplicationController
   def edit
     @activity = Activity.find(params[:id])
   end
-  #
-  ## PUT /articles/1
-  ## PUT /articles/1.json
-  #def update
-  #  @article = Article.find(params[:id])
-  #
-  #  respond_to do |format|
-  #    if @article.update_attributes(params[:article])
-  #      format.html { redirect_to @article, notice: 'Article was successfully updated.' }
-  #      format.json { head :no_content }
-  #    else
-  #      format.html { render action: "edit" }
-  #      format.json { render json: @article.errors, status: :unprocessable_entity }
-  #    end
-  #  end
-  #end
+
+  # PUT /activities/1
+  # PUT /activities/1.json
+  def update
+    @activity = Activity.find(params[:id])
+
+      if @activity.update_attributes(params[:activity])
+        redirect_to @activity, notice: 'Activity was successfully updated.'
+      else
+        render action: "edit"
+      end
+  end
 end
