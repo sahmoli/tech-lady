@@ -1,6 +1,7 @@
 RailsGirl::Application.routes.draw do
-  resources :activities
   resources :imgs
+
+  resources :activities
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
