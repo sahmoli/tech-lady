@@ -43,10 +43,9 @@ describe ActivitiesController do
     assigns(:activities).should include(act2)
   end
 
-  it "should contain name" do
+  it "should contain title" do
     Activity.create!({title:"Rails Girls", description:"desc1", activity_date:Time.now, address:"add1"})
     get :index
-
     response.body.should =~ /Rails Girls/
   end
 end
