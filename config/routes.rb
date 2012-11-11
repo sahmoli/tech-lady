@@ -1,5 +1,4 @@
 RailsGirl::Application.routes.draw do
-
   resources :activities
   resources :imgs
 

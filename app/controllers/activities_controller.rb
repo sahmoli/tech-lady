@@ -15,4 +15,8 @@ class ActivitiesController < ApplicationController
       redirect_to :action => "new"
     end
   end
+
+  def index
+
+  end
 end
