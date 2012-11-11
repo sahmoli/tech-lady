@@ -3,4 +3,6 @@ class Activity < ActiveRecord::Base
 
   validates_presence_of :title, :activity_date, :address, :description
 
+  default_scope order('created_at DESC')
+
 end

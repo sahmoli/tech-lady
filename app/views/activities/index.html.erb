@@ -41,10 +41,10 @@
     <ul>
       <% @activities.each do |activity|   %>
       <li>
-        <h1><a href="http://www.chengdu-open-party.org/event/10"><%= activity.title %></a></h1>
+        <h1><%= link_to activity.title, activity_path(activity.id) %></h1>
         <div class="textile">
-          <p><span class="key">时间</span><span class="value">2012年10月28日，下午2：00-5：30</span></P>
-          <p><span class="key">地点</span><span class="value">ThoughtWorks成都办公室 （天府软件园E区E1-705 ）</span></p>
+          <p><span class="key">时间</span><span class="value"><%= activity.activity_date %></span></P>
+          <p><span class="key">地点</span><span class="value"><%= activity.address %></span></p>
         </div>
       </li>
       <% end %>

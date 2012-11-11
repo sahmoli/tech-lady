@@ -1,4 +1,3 @@
-
 FactoryGirl.define do
   factory :activity do
     title "Rails title"
@@ -6,5 +5,4 @@ FactoryGirl.define do
     address 'ThoughtWorks'
     activity_date Time.now
   end
-
 end

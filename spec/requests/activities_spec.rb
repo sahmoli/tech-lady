@@ -17,6 +17,16 @@ describe "Activities" do
       it { should have_content activity.activity_date}
       it { should have_content activity.address}
     end
+
   end
+
+  #describe "should have activity detail link on list page" do
+  #  before do
+  #    visit activities_path
+  #  end
+  #  describe "get"  do
+  #    it { should have_link(activity.title, href: activity_path(activity))}
+  #  end
+  #end
 
 end

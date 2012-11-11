@@ -49,6 +49,20 @@ describe ActivitiesController do
     response.body.should =~ /Rails Girls/
   end
 
+  it "should contain time" do
+    someday = '2011-12-31 16:00:00 UTC'
+    Activity.create!({title:"Rails Girls", description:"desc1", activity_date: Time.new(someday), address:"add1"})
+    get :index
+    response.body.should =~ /2010-12-31 16:00:00 UTC/
+  end
+
+  it "should contain address" do
+    Activity.create!({title:"Rails Girls", description:"desc1", activity_date: Time.now, address:"addRESS"})
+    get :index
+    response.body.should =~ /addRESS/
+  end
+
+
   it "should contain title of activity" do
     activity = Activity.create!({title: "Rails Girls", description: "desc1", activity_date: Time.now, address: "add1"})
     get :edit, id: activity.id
