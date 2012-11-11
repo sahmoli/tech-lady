@@ -80,11 +80,11 @@
       <div class="carousel-inner">
         <% unless @imgs.empty? %>
         <div class="active item">
-          <img src="<%= @imgs[0].path %>">
+          <img src="<%= "img/"+@imgs[0].path %>">
         </div>
         <% @imgs[1..-1].each do |i| %>
         <div class="item">
-          <img src="<%= i.path %>">
+          <img src="<%= "img/"+i.path %>">
         </div>
         <% end %>
         <% end %>
