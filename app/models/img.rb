@@ -5,8 +5,6 @@ class Img < ActiveRecord::Base
   after_save :save_image
   PHOTO_STORE = File.join Rails.root, 'public', 'img'
 
-  public
-
   def creation_validate
     if Img.all.size >= 4
       errors.add(:path, "can not upload more than 4 images")
@@ -16,8 +14,6 @@ class Img < ActiveRecord::Base
   end
 
   def load_image_file=(data)
-    p data.methods
-    p data
     self.path = data.original_filename
     @image_data = data
   end
