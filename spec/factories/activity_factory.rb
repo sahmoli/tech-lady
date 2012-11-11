@@ -3,6 +3,6 @@ FactoryGirl.define do
     title "Rails title"
     description 'for test'
     address 'ThoughtWorks'
-    activity_date Time.now
+    activity_date Time.gm(2012, 11, 13, 9, 0, 0)
   end
 end

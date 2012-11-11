@@ -2,11 +2,12 @@ require "spec_helper"
 
 describe ActivitiesController do
   render_views
+
   before :each do
     @activity_params = {:title => "Rails title",
-                       :description => "xxx",
-                       :address => "ThoughtWorks",
-                       :activity_date => Time.now}
+                        :description => "xxx",
+                        :address => "ThoughtWorks",
+                        :activity_date => Time.now}
   end
 
   it "should return a form  when get new" do
@@ -26,46 +27,6 @@ describe ActivitiesController do
     @activity_params[:title] = nil
     post :create, :activity => @activity_params
     response.should redirect_to(new_activity_path)
-  end
-
-  it "should show activity list" do
-    #given
-    get :index
-    response.should render_template('activities/index')
-  end
-
-  it "should contains activities" do
-    act1 = Activity.create!({title:"1", description:"desc1", activity_date:Time.now, address:"add1"})
-    act2 = Activity.create!({title:"2", description:"desc2", activity_date:Time.now, address:"add2"})
-    get :index
-    assigns(:activities).should_not be_nil
-    assigns(:activities).should include(act1)
-    assigns(:activities).should include(act2)
-  end
-
-  it "should contain title" do
-    Activity.create!({title:"Rails Girls", description:"desc1", activity_date:Time.now, address:"add1"})
-    get :index
-    response.body.should =~ /Rails Girls/
-  end
-
-  it "should contain time" do
-    someday = Time.new(2008,6,21, 13,30,0, "+00:00")
-    Activity.create!({title:"Rails Girls", description:"desc1", activity_date: someday, address:"add1"})
-    get :index
-    response.body.should =~ /2008-06-21, 13:30:00/
-  end
-
-  it "should contain address" do
-    Activity.create!({title:"Rails Girls", description:"desc1", activity_date: Time.now, address:"addRESS"})
-    get :index
-    response.body.should =~ /addRESS/
-  end
-
-  it "should contain link to detail" do
-    activity = Activity.create!({title:"Rails Girls", description:"desc1", activity_date: Time.now, address:"addRESS"})
-    get :index
-    response.body.should =~ /"\/activities\/#{activity.id}"/
   end
 
 
@@ -89,4 +50,66 @@ describe ActivitiesController do
     put :update, id: activity.id, activity: {title: "", description: "description", address: "address", activity_date: Time.now}
     response.body.should =~ /Title can.* be blank/
   end
+
+
+  describe "GET activities list" do
+
+    it "should show activity list view" do
+      get :index
+      response.should render_template('activities/index')
+    end
+
+    it "should contains activities" do
+      rails_girls = create(:activity, title: 'Rails Girls')
+      get :index
+      assigns(:activities).should_not be_nil
+      assigns(:activities).should include(rails_girls)
+    end
+
+    it "should order by activity date descendingly" do
+      rails_girls = create(:activity, title: 'Rails Girls', activity_date: 2.days.ago)
+      tech_lady = create(:activity, title: 'Rails Girls', activity_date: 1.days.ago)
+      get :index
+      assigns(:activities).first.should eql(tech_lady)
+      assigns(:activities).last.should eql(rails_girls)
+    end
+
+    it "should contain title" do
+      rails_girls = create(:activity, title: 'Rails Girls')
+      get :index
+      response.body.should =~ /#{rails_girls.title}/
+    end
+
+    it "should contain time" do
+      create(:activity, activity_date: Time.gm(2008, 6, 21, 13, 30, 0))
+      get :index
+      response.body.should =~ /2008-06-21, 13:30:00/
+    end
+
+    it "should contain address" do
+      address = 'Some Address You Should Know'
+      create(:activity, address: address)
+      get :index
+      response.body.should =~ /#{address}/
+    end
+
+    it "should contain link to detail" do
+      activity = create(:activity)
+      get :index
+      response.body.should =~ /#{activity_path(activity)}/
+    end
+
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+

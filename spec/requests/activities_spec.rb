@@ -14,7 +14,7 @@ describe "Activities" do
     describe "should have activity details" do
       it { should have_content activity.title }
       it { should have_content activity.description }
-      it { should have_content formated_date(activity.activity_date)}
+      it { should have_content formatted_date(activity.activity_date)}
       it { should have_content activity.address}
     end
 

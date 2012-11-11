@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+
   def show
     @activity = Activity.find_by_id(params[:id])
   end
@@ -17,7 +18,7 @@ class ActivitiesController < ApplicationController
   end
 
   def index
-    @activities = Activity.all
+    @activities = Activity.order('activity_date DESC').all
   end
 
   # GET /activities/1/edit
@@ -30,10 +31,10 @@ class ActivitiesController < ApplicationController
   def update
     @activity = Activity.find(params[:id])
 
-      if @activity.update_attributes(params[:activity])
-        redirect_to @activity, notice: 'Activity was successfully updated.'
-      else
-        render action: "edit"
-      end
+    if @activity.update_attributes(params[:activity])
+      redirect_to @activity, notice: 'Activity was successfully updated.'
+    else
+      render action: "edit"
+    end
   end
 end
