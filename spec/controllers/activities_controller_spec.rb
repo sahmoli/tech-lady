@@ -50,8 +50,8 @@ describe ActivitiesController do
   end
 
   it "should contain time" do
-    someday = Time.new(2008,6,21, 13,30,0, "+08:00")
-    Activity.create!({title:"Rails Girls", description:"desc1", activity_date: Time.new(someday), address:"add1"})
+    someday = Time.new(2008,6,21, 13,30,0, "+00:00")
+    Activity.create!({title:"Rails Girls", description:"desc1", activity_date: someday, address:"add1"})
     get :index
     response.body.should =~ /2008-06-21, 13:30:00/
   end
