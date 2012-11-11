@@ -4,9 +4,9 @@ describe ActivitiesController do
   render_views
   before :each do
     @activity_params = {:title => "Rails title",
-                       :description => "xxx",
-                       :address => "ThoughtWorks",
-                       :activity_date => Time.now}
+                        :description => "xxx",
+                        :address => "ThoughtWorks",
+                        :activity_date => Time.now}
   end
 
   it "should return a form  when get new" do
@@ -35,8 +35,8 @@ describe ActivitiesController do
   end
 
   it "should contains activities" do
-    act1 = Activity.create!({title:"1", description:"desc1", activity_date:Time.now, address:"add1"})
-    act2 = Activity.create!({title:"2", description:"desc2", activity_date:Time.now, address:"add2"})
+    act1 = Activity.create!({title: "1", description: "desc1", activity_date: Time.now, address: "add1"})
+    act2 = Activity.create!({title: "2", description: "desc2", activity_date: Time.now, address: "add2"})
     get :index
     assigns(:activities).should_not be_nil
     assigns(:activities).should include(act1)
@@ -44,9 +44,30 @@ describe ActivitiesController do
   end
 
   it "should contain name" do
-    Activity.create!({title:"Rails Girls", description:"desc1", activity_date:Time.now, address:"add1"})
+    Activity.create!({title: "Rails Girls", description: "desc1", activity_date: Time.now, address: "add1"})
     get :index
 
     response.body.should =~ /Rails Girls/
+  end
+
+  it "should contain title of activity" do
+    activity = Activity.create!({title: "Rails Girls", description: "desc1", activity_date: Time.now, address: "add1"})
+    get :edit, id: activity.id
+
+    response.body.should =~ /Rails Girls/
+  end
+
+  it "should update activity" do
+    activity = Activity.create!({title: "Rails Girls", description: "desc1", activity_date: Time.now, address: "add1"})
+    put :update, id: activity.id, activity: {title: "Rails Girls Title", description: "description", address: "address", activity_date: Time.now}
+    activity = assigns[:activity]
+    activity.title.should eq("Rails Girls Title")
+    response.should redirect_to(activity_path(activity.id))
+  end
+
+  it "should not update activity when the title is nil" do
+    activity = Activity.create!({title: "Rails Girls", description: "desc1", activity_date: Time.now, address: "add1"})
+    put :update, id: activity.id, activity: {title: "", description: "description", address: "address", activity_date: Time.now}
+    response.body.should =~ /Title can.* be blank/
   end
 end

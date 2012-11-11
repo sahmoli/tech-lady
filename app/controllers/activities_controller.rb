@@ -18,6 +18,22 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = Activity.all
+  end
 
+  # GET /activities/1/edit
+  def edit
+    @activity = Activity.find(params[:id])
+  end
+
+  # PUT /activities/1
+  # PUT /activities/1.json
+  def update
+    @activity = Activity.find(params[:id])
+
+      if @activity.update_attributes(params[:activity])
+        redirect_to @activity, notice: 'Activity was successfully updated.'
+      else
+        render action: "edit"
+      end
   end
 end

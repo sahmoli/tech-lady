@@ -39,21 +39,19 @@ group :test, :development do
   gem "factory_girl_rails", "4.1.0"
   gem "rspec-rails", "~> 2.0"
   gem 'sqlite3', '1.3.5'
+  gem 'capybara', '1.1.2'
 end
 
 
 rails_env = ENV['RAILS_ENV']
-if rails_env == "development" || rails_env == "test"
+unless rails_env == "production"
   gem "factory_girl_rails", "4.1.0"
   gem "rspec-rails", "~> 2.0"
   gem 'sqlite3', '1.3.5'
+  gem 'capybara', '1.1.2'
 end
 
 group :production do
   gem 'pg'
 end
 
-group :test do
-  gem 'capybara', '1.1.2'
-  gem 'factory_girl_rails', '4.1.0'
-end
