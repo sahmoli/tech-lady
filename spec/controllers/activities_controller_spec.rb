@@ -48,4 +48,25 @@ describe ActivitiesController do
     get :index
     response.body.should =~ /Rails Girls/
   end
+
+  it "should contain title of activity" do
+    activity = Activity.create!({title: "Rails Girls", description: "desc1", activity_date: Time.now, address: "add1"})
+    get :edit, id: activity.id
+
+    response.body.should =~ /Rails Girls/
+  end
+
+  it "should update activity" do
+    activity = Activity.create!({title: "Rails Girls", description: "desc1", activity_date: Time.now, address: "add1"})
+    put :update, id: activity.id, activity: {title: "Rails Girls Title", description: "description", address: "address", activity_date: Time.now}
+    activity = assigns[:activity]
+    activity.title.should eq("Rails Girls Title")
+    response.should redirect_to(activity_path(activity.id))
+  end
+
+  it "should not update activity when the title is nil" do
+    activity = Activity.create!({title: "Rails Girls", description: "desc1", activity_date: Time.now, address: "add1"})
+    put :update, id: activity.id, activity: {title: "", description: "description", address: "address", activity_date: Time.now}
+    response.body.should =~ /Title can.* be blank/
+  end
 end
