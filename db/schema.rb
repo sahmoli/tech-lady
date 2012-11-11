@@ -13,26 +13,20 @@
 
 ActiveRecord::Schema.define(:version => 20121111043120) do
 
+  create_table "activities", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "activity_date"
+    t.string   "address"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "imgs", :force => true do |t|
     t.string   "path"
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "items", :force => true do |t|
-    t.string   "item_name"
-    t.integer  "order_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "items", ["order_id"], :name => "index_items_on_order_id"
-
-  create_table "orders", :force => true do |t|
-    t.string   "order_name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
 end
