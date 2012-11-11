@@ -105,13 +105,14 @@
               <h2><a class="event-detail" href="event-detail.html">冬意渐浓</a></h2>
             </div>
             <div class="info-item">
-              <label>时间</label>
-              <h3>14:30</h3>
-              <h3>2012年11月10日</h3>
+              <label><%= @activity.title %></label>
+              <% time = @activity.activity_date %>
+              <h3><%= time.hour %>:<%= time.min%></h3>
+              <h3><%= time.year %>年<%= time.month%>月<%= time.day%>日</h3>
             </div>
             <div class="info-item">
               <label>地点</label>
-              <h3>东直门国华投资大厦1105 ThoughtWorks办公室</h3>
+              <h3><%= @activity.address%></h3>
             </div>
             <a class="more-events" href="event-list.html"><span>往期</span></a>
           </div>
